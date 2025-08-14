@@ -1,6 +1,6 @@
 import csv
 import os
-from pylocres import LoCResFile, LocalizedString
+from pylocres import LocresFile, LocalizedString
 
 def locres_to_csv(locres_path, csv_path):
     """
@@ -8,7 +8,7 @@ def locres_to_csv(locres_path, csv_path):
     """
     try:
         print(f"    Cargando archivo: {locres_path}")
-        locres_file = LoCResFile.load(locres_path)
+        locres_file = LocresFile.load(locres_path)
 
         print(f"    Creando archivo CSV: {csv_path}")
         with open(csv_path, 'w', newline='', encoding='utf-8') as f:
@@ -63,7 +63,7 @@ def csv_to_locres(csv_path, locres_path):
                 ))
 
         # Crear un nuevo archivo .locres y añadir las entradas
-        new_locres_file = LoCResFile()
+        new_locres_file = LocresFile()
         new_locres_file.entries = new_entries
 
         # Guardar el nuevo archivo .locres
