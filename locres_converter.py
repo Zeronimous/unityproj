@@ -1,6 +1,7 @@
 import csv
 import os
-from pylocres import LocresFile, LocalizedString
+from pylocres import LocresFile
+from pylocres.models import LocalizedString
 
 def locres_to_csv(locres_path, csv_path):
     """
