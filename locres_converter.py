@@ -22,7 +22,8 @@ def read_string(f):
     else:
         # Se leen los bytes y se elimina el terminador nulo
         string_bytes = f.read(length)
-        return string_bytes.decode('utf-8').rstrip('\x00')
+        # Cambiamos a latin-1, que es más permisivo y no fallará en bytes desconocidos.
+        return string_bytes.decode('latin-1').rstrip('\x00')
 
 def write_string(f, text):
     """Escribe una cadena de texto con prefijo de longitud en el archivo."""
