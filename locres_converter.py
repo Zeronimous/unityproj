@@ -52,12 +52,9 @@ def locres_to_csv(locres_path, csv_path):
             writer.writerow(['Namespace', 'Key', 'SourceHash', 'OriginalText', 'TranslatedText'])
 
             # --- Cabecera (Header) ---
-            # Magic number (GUID) y versión. Lo saltaremos por ahora, pero es crucial para la re-escritura.
-            # Esta es una suposición común de la estructura.
-            # Un GUID son 16 bytes. Vamos a saltar una cantidad fija de bytes que parece ser común.
-            # Esta parte es frágil. Podría necesitar un análisis más profundo si falla.
-            # Leemos los primeros 8 bytes para la versión (2 enteros)
-            version_info = f.read(8) # Saltamos esto por ahora
+            # Magic number (GUID) y versión. La investigación sugiere que la cabecera
+            # a menudo consiste en un GUID de 16 bytes.
+            header_bytes = f.read(16) # Saltar el GUID de 16 bytes
 
             # Leer el número de entradas de texto
             strings_count = struct.unpack('<i', f.read(4))[0]
