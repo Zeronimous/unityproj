@@ -1,5 +1,5 @@
 import sys
-from pylocres import LocresFile
+from pylocres import load
 
 def inspect_locres(file_path):
     """
@@ -8,8 +8,8 @@ def inspect_locres(file_path):
     print(f"--- Inspeccionando el archivo: {file_path} ---")
 
     try:
-        # Cargar el archivo .locres
-        locres_file = LocresFile.load(file_path)
+        # Cargar el archivo .locres usando la función load() principal
+        locres_file = load(file_path)
         print("Archivo .locres cargado con éxito.")
 
         # Comprobar si tiene entradas
